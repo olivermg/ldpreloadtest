@@ -1,6 +1,7 @@
 *.o
 *.so
 /prg
+/wrapper
 
 *~
 *.swp

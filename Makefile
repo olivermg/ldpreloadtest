@@ -23,10 +23,10 @@ prg: prg.o
 
 
 wrapper.o: wrapper.c
-	gcc -Wall -g -I. -c wrapper.c
+	gcc -Wall -g -c wrapper.c
 
 wrapper: wrapper.o
-	gcc -Wall -g -L. -lbar -o wrapper wrapper.o
+	gcc -Wall -g -o wrapper wrapper.o
 
 
 clean:

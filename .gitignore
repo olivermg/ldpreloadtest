@@ -2,6 +2,7 @@
 *.so
 /prg
 /wrapper
+/wrapper32
 
 *~
 *.swp

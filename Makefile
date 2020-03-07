@@ -1,4 +1,4 @@
-all: libfoo.so libbar.so prg wrapper
+all: libfoo.so libbar.so prg wrapper wrapper32
 
 
 foo.o: foo.c
@@ -28,9 +28,15 @@ wrapper.o: wrapper.c
 wrapper: wrapper.o
 	gcc -Wall -g -o wrapper wrapper.o
 
+wrapper32.o: wrapper.c
+	gcc -Wall -m32 -g -c -o wrapper32.o wrapper.c
+
+wrapper32: wrapper32.o
+	gcc -Wall -m32 -g -o wrapper32 wrapper32.o
+
 
 clean:
-	rm -f *.o libfoo.so libbar.so prg wrapper
+	rm -f *.o libfoo.so libbar.so prg wrapper wrapper32
 
 
 .PHONY: all clean

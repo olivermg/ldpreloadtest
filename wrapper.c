@@ -4,21 +4,21 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#define PROGRAM "prg"
+#define LIB "libbar.so"
+
 int main(int argc, char* argv[]) {
     pid_t pid = fork();
 
     if (pid == 0) {
         // child
-        static char *argv[] = {
-            "prg",
-            NULL
-        };
+        argv[0] = PROGRAM;
         static char *env[] = {
             "LD_LIBRARY_PATH=.",
-            "LD_PRELOAD=libbar.so",
+            "LD_PRELOAD=" LIB,
             NULL
         };
-        execve("./prg", argv, env);
+        execve("./" PROGRAM, argv, env);
         exit(127);
     } else {
         // parent

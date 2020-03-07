@@ -23,13 +23,13 @@ prg: prg.o
 
 
 wrapper.o: wrapper.c
-	gcc -Wall -g -c wrapper.c
+	gcc -Wall -g -DLDLIBPATH=$(LDLIBPATH) -DLDPRELOAD=$(LDPRELOAD) -DPROGRAM=$(PROGRAM) -c wrapper.c
 
 wrapper: wrapper.o
 	gcc -Wall -g -o wrapper wrapper.o
 
 wrapper32.o: wrapper.c
-	gcc -Wall -m32 -g -c -o wrapper32.o wrapper.c
+	gcc -Wall -m32 -g -DLDLIBPATH=$(LDLIBPATH) -DLDPRELOAD=$(LDPRELOAD) -DPROGRAM=$(PROGRAM) -c -o wrapper32.o wrapper.c
 
 wrapper32: wrapper32.o
 	gcc -Wall -m32 -g -o wrapper32 wrapper32.o

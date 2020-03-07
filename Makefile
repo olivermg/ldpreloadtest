@@ -22,13 +22,13 @@ prg: prg.o
 	gcc -Wall -g -L. -lfoo -o prg prg.o
 
 
-wrapper.o: wrapper.c
+wrapper.o:
 	gcc -Wall -g -DLDLIBPATH=$(LDLIBPATH) -DLDPRELOAD=$(LDPRELOAD) -DPROGRAM=$(PROGRAM) -c wrapper.c
 
 wrapper: wrapper.o
 	gcc -Wall -g -o wrapper wrapper.o
 
-wrapper32.o: wrapper.c
+wrapper32.o:
 	gcc -Wall -m32 -g -DLDLIBPATH=$(LDLIBPATH) -DLDPRELOAD=$(LDPRELOAD) -DPROGRAM=$(PROGRAM) -c -o wrapper32.o wrapper.c
 
 wrapper32: wrapper32.o
@@ -39,4 +39,4 @@ clean:
 	rm -f *.o libfoo.so libbar.so prg wrapper wrapper32
 
 
-.PHONY: all clean
+.PHONY: all clean wrapper.o wrapper32.o
